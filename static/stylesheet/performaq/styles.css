@@ -2,21 +2,14 @@
 body {
     font-family: Arial, sans-serif;
     margin: 0;
+    
     padding: 0;
-}
-
-/* Header styles */
-header {
-    background: linear-gradient(to right, #00d746, #005a4e); /* Gradient from #00d746 to #005a4e */
-    padding: 20px;
-    text-align: center;
-    position: relative; /* Ensure the header is positioned correctly */
-    z-index: 1; /* Ensure it appears above other content */
+    background-color: #fcfbf3;
 }
 
 /* Navbar styles */
 .navbar {
-    background-color: #343a40; /* Dark background for navbar */
+    background-color: #343a40;
 }
 
 .navbar-nav > li {
@@ -24,74 +17,76 @@ header {
 }
 
 .navbar-nav > li > a {
-    color: white; /* White text color for navbar links */
+    color: white;
 }
 
 .navbar-nav > li > a:hover {
-    color: #d8e4fa; /* Light color on hover */
+    color: #d8e4fa;
+}
+.dropdown-menu {
+    border-radius: 10px;
 }
 
-/* Hero section styles */
+.form-control {
+    margin-bottom: 10px;
+}
+/* Header (Hero section) styles */
+header {
+    background: linear-gradient(to right, #00d746, #005a4e);
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
 .hero {
-    color: black;
     padding: 100px 20px;
-    font-size: 70px;
-    font-weight: 300;
-    line-height: 1.2em;
-    letter-spacing: -2.17px;
-    margin: 0 auto; /* Center the hero section */
-    text-align: left; /* Align text to the left */
-    
+    margin: 0 auto;
+    text-align: left;
+    color: black;
 }
 
 .hero-content {
     display: flex;
-    flex-direction: column; /* Stack elements vertically */
-    align-items: flex-start; /* Align items to the left */
-    width: 70vw; /* Adjust width as needed */
-    margin: 0 auto; /* Center the content horizontally */
+    flex-direction: column;
+    align-items: flex-start;
+    width: 70vw;
+    margin: 0 auto;
+}
+
+.hero h2, .hero h1 {
+    margin: 0;
+    letter-spacing: -2.17px;
+    color: black;
 }
 
 .hero h2 {
     font-size: 70px;
     font-weight: 300;
-    line-height: 1.2em; /* Adjust as needed to reduce space */
-    letter-spacing: -2.17px;
-    color: black;
-    margin: 0 0 10px 0; /* Reduce space below h2 */
 }
 
 .hero h1 {
     font-size: 70px;
     font-weight: 900;
+    line-height: 1.1em;
     text-transform: capitalize;
-    line-height: 1.1em; /* Adjust line-height if needed */
-    letter-spacing: -2.17px;
-    color: black;
-    margin: 0; /* No margin for h1 */
-}
-
-.hero p {
-    font-size: 18px;
-    color: white;
 }
 
 .hero form {
-    display: flex; /* Use flexbox to align items horizontally */
-    align-items: center; /* Center items vertically */
-    margin-top: 20px; /* Space between headings and form */
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
 }
-
 
 .hero input[type="text"] {
     padding: 10px;
     font-size: 16px;
-    border: 1px solid #ced4da; /* Border for the input */
+    border: 1px solid #ced4da;
     border-radius: 5px;
-    width: 400px; /* Adjust width as needed */
-    height: 40px; /* Match height with button */
-    box-sizing: border-box; /* Include padding and border in element's total width and height */
-    margin-right: 10px; /* Space between input and button */
+    width: 400px;
+    height: 40px;
+    box-sizing: border-box;
+    margin-right: 10px;
 }
 
 .hero button {
@@ -102,22 +97,220 @@ header {
     background-color: #333;
     color: white;
     cursor: pointer;
-    height: 40px; /* Match height with input */
-    box-sizing: border-box; /* Include padding and border in element's total width and height */
-    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
+    height: 40px;
+    box-sizing: border-box;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Categories Section */
+.cat-header {
+    display: flex;
+    background-color: #f1f1e8;
+    justify-content: center;
+    font-size: 1.3rem;
+    padding: 0.4%;
+    margin: 0;
+}
+
+.custom-card-container-section {
+    padding: 2rem 0;
+    background-color: #fcfbf3;
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+ 
+}
+
+.custom-card-container {
+    margin-top: 4rem;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr); /* 6 cards per row */
+    gap: 1rem; /* Space between cards */
+    width: 100%; /* Make sure it adjusts to the screen size */
+    max-width: calc(6 * 270px + 5 * 1rem); /* Adjusted max-width to accommodate wider cards and spacing */
+    padding: 0 1rem; /* Add padding to avoid touching edges */
+    margin: 0 auto; /* Center the container */
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+    background-color: #fcfbf3;
+}
+
+.custom-card {
+    height: 130px; /* Increased height for better visual appeal */
+    width: 100%; /* Let the card fill available space */
+    max-width: 270px; /* Increased max-width to make cards wider */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.5rem;
+    background: #ffffff;
+    padding: 1rem; /* Adjusted padding for better spacing */
+    color: rgb(107, 114, 128);
+    border: 1px solid #000000;
+    box-shadow: 0px 4px 6px rgba(100, 172, 5, 0.1);
+    box-sizing: border-box;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    margin: 0 auto; /* Center the card horizontally within its grid cell */
+    
 }
 
 
-/* Main content styles */
-main {
-    padding: 20px;
+.custom-card:hover {
+    background-color: #f4f4f4;
+    transform: translateY(-8px); /* Increased movement on hover */
+    box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.2);
 }
 
-/* Review section styles */
-.review {
-    border: 1px solid #ddd;
-    padding: 15px;
-    margin-bottom: 20px;
+.content {
+    margin-left: 0.75rem;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+}
+
+.centered-content {
+    text-align: center;
+}
+
+.title {
+    font-size: 0.875rem;
+    font-weight: bold;
+    color: black;
+}
+/* Modal */
+.modal-body{
+    margin-bottom: 1rem;
+}
+.modal-description{
+    margin-bottom: 1rem;
+}
+
+/* View All Button */
+.button-placement {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cattwo-button {
+    height: 40px;
+    background: white;
+    padding: 12px 24px;
+    border: 1px solid #4f4f4f;
+    border-radius: 0.5rem;
+    transition: all 0.2s ease-in;
+    position: relative;
+    overflow: hidden;
+    font-size: 1rem;
+    cursor: pointer;
+    color: black;
+    z-index: 1;
+}
+
+.cattwo-button:before,
+.cattwo-button:after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 140%;
+    height: 180%;
+    border-radius: 50%;
+    display: block;
+    transition: all 0.5s cubic-bezier(0.55, 0, 0.1, 1);
+    z-index: -1;
+}
+
+.cattwo-button:before {
+    top: 100%;
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.cattwo-button:after {
+    top: 180%;
+    background-color: #39bda7;
+}
+
+.cattwo-button:hover {
+    color: #ffffff;
+    border: 1px solid #005a4e;
+}
+
+.cattwo-button:hover:before {
+    top: -35%;
+    background-color: #39bda7;
+    transform: scaleX(0.8);
+}
+
+.cattwo-button:hover:after {
+    top: -45%;
+    background-color: #39bda7;
+    transform: scaleX(0.8);
+}
+
+/*Main content*/
+
+.cards-container {
+    display: flex;
+    flex-wrap: wrap; /* Allows cards to wrap to the next line if the screen is too narrow */
+    gap: 1rem; /* Adjusts space between cards */
+    justify-content: space-between; /* Distributes cards evenly across the row */
+    margin-bottom: 2rem;
+}
+.card {
+    flex: 1 1 calc(25% - 1rem); /* Makes each card take up 25% of the row with space between them */
+    max-width: 18rem; /* Ensures the cards have a fixed maximum width */
+}
+
+@media (max-width: 768px) {
+    .card {
+        flex: 1 1 calc(50% - 1rem); /* On smaller screens, make cards take up 50% of the row */
+    }
+}
+
+@media (max-width: 480px) {
+    .card {
+        flex: 1 1 100%; /* On very small screens, make cards take up 100% of the row */
+    }
+}
+#product-cards {
+    width: 80vw; /* 80% of the viewport width */
+    margin: 0 auto; /* Center the section horizontally */
+}
+.card-img-container {
+    position: relative;
+}
+.card-body {
+    padding: 1rem; /* Adjust padding as needed */
+}
+
+.card-title {
+    margin-bottom: 0.1rem; /* Adjust margin as needed */
+}
+
+.card-text {
+    margin-top: 1rem; /* Remove top margin */
+    margin-bottom: 1rem; /* Adjust bottom margin */
+}
+
+.card-img-top {
+    width: 100%;
+    height: auto;
+}
+
+.card-img-overlay {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 1, 0.7); /* Optional: Adds a semi-transparent background */
+    color: #ffffff; /* Adjust text color if needed */
+    padding: 10px;
+    border-radius: 0 0 0 5px; /* Optional: Rounded bottom-left corner */
+}
+
+
+/* About Section */
+#about {
+    display: flex;
+    width: 80vw;
+    margin-top: 3rem;
 }
 
 /* Footer styles */
@@ -142,201 +335,8 @@ footer {
     color: white;
     text-decoration: none;
 }
-
-/* Card container styles */
-.cat-header {
-    display: flex;
-    background-color: #f1f1e8;
-    justify-content: center;
-    font-size: 1.3rem;
-    padding: 0.4%;
-    margin: 0; /* Removes margin around h2 */
-}
-
-.card-container-header {
-    display: flex;
-    justify-content: space-between; /* Space between title and button */
-    align-items: center; /* Align items vertically centered */
-    padding: 2rem; /* Add padding to prevent content from touching edges */
-    margin-bottom: 1rem; /* Space between header and cards */
-    width: 80vw; /* Adjust width as needed */
-    margin: 0 auto; /* Center the container */
-}
-
-.card-container-title {
-    font-family: roboto;
-    font-size: 2rem;
-    margin-bottom: 1rem;
-}
-
-/* Card container layout */
-.card-container-section {
-    padding: 2rem 0;
+.main-section{
+    margin-top: 2rem;
     background-color: #fcfbf3;
     margin-bottom: 2rem;
-}
-
-.card-container {
-    margin-top: 2rem;
-    display: grid; /* Use CSS Grid layout */
-    grid-template-columns: repeat(4, 1fr); /* 4 columns of equal width */
-    gap: 1rem; /* Space between grid items */
-    width: 80vw; /* Adjust width as needed */
-    max-width: calc(4 * 220px + 3 * 1rem); /* Max width for 4 cards with spacing */
-    margin: 0 auto; /* Center the container */
-}
-
-/* Card styling */
-.card {
-    height: 70px; /* Increased height for more space */
-    display: flex;
-    align-items: center;
-    justify-content: center; /* Center content horizontally */
-    border-radius: 0.5rem;
-    background: #ffffff; /* White background */
-    padding: 1.5rem; /* Increased padding for more space inside */
-    color: rgb(107, 114, 128);
-    border: 1px solid #000000; /* Black border */
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-    box-sizing: border-box; /* Include padding and border in element's total width and height */
-    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
-}
-
-.card:hover {
-    background-color: #f4f4f4; /* Light gray background on hover */
-    transform: translateY(-5px); /* Move the card up on hover */
-    box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
-}
-
-/* Content and title inside the card */
-.content {
-    margin-left: 0.75rem;
-    font-size: 0.875rem;
-    line-height: 1.25rem;
-    font-weight: 400;
-}
-
-.centered-content {
-    text-align: center;
-}
-
-.title {
-    margin-bottom: 0.25rem;
-    font-size: 0.875rem;
-    line-height: 1.25rem;
-    font-weight: bold;
-    color: black;
-}
-
-.holding-btn {
-    display: flex;
-    justify-content: center;
-}
-
-.view-all-button {
-    background-color: #d8e4fa; /* Background color of the button */
-    height: 70px;
-    color: #205cd4; /* Text color */
-    border: none; /* Remove border */
-    border-radius: 0.5rem; /* Rounded corners */
-    padding: 0.5rem 1rem; /* Padding inside the button */
-    font-size: 1rem; /* Font size */
-    cursor: pointer; /* Pointer cursor on hover */
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
-}
-
-.view-all-button:hover {
-    background-color: #205cd4; /* Darker background color on hover */
-    color: #ffffff; /* Change text color on hover */
-    transform: translateY(-5px); /* Move the button up on hover */
-    box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
-}
-
-.cat-button {
-    background-color: #d8e4fa; /* Background color of the button */
-    color: #074bd4; /* Text color */
-    border: none; /* Remove border */
-    border-radius: 0.5rem; /* Rounded corners */
-    padding: 0.5rem 1rem; /* Padding inside the button */
-    font-size: 1rem; /* Font size */
-    cursor: pointer; /* Pointer cursor on hover */
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
-}
-
-.cat-button:hover {
-    background-color: #205cd4; /* Darker background color on hover */
-    color: #ffffff; /* Change text color on hover */
-    transform: translateY(-5px); /* Move the button up on hover */
-    box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
-}
-
-.button-placement {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.cattwo-button {
-    height: 40px;
-    background: white;
-    display: inline-block;
-    padding: 12px 24px;
-    border: 1px solid #4f4f4f;
-    border-radius: 0.5rem;
-    transition: all 0.2s ease-in;
-    position: relative;
-    overflow: hidden;
-    font-size: 1rem;
-    cursor: pointer;
-    color: black;
-    z-index: 1;
-}
-
-.cattwo-button:before {
-    content: "";
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%) scaleY(1) scaleX(1.25);
-    top: 100%;
-    width: 140%;
-    height: 180%;
-    background-color: rgba(0, 0, 0, 0.05);
-    border-radius: 50%;
-    display: block;
-    transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
-    z-index: -1;
-}
-
-.cattwo-button:after {
-    content: "";
-    position: absolute;
-    left: 55%;
-    transform: translateX(-50%) scaleY(1) scaleX(1.45);
-    top: 180%;
-    width: 160%;
-    height: 190%;
-    background-color: #39bda7;
-    border-radius: 50%;
-    display: block;
-    transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
-    z-index: -1;
-}
-
-.cattwo-button:hover {
-    color: #ffffff;
-    border: 1px solid #005a4e;
-}
-
-.cattwo-button:hover:before {
-    top: -35%;
-    background-color: #39bda7;
-    transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
-}
-
-.cattwo-button:hover:after {
-    top: -45%;
-    background-color: #39bda7;
-    transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
 }
