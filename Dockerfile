@@ -1,15 +1,19 @@
 # Use the official Python image from the Docker Hub
 FROM python:3.9-slim
 
-# Install Git (required for cloning repositories)
+# Install Git and system dependencies required for mysqlclient
 RUN apt-get update && \
-    apt-get install -y git && \
+    apt-get install -y \
+    git \
+    build-essential \
+    pkg-config \
+    libmariadb-dev && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
 # Set environment variables
-ENV PYTHONDONTWRITEBYTECODE 1
-ENV PYTHONUNBUFFERED 1
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1
 
 # Set the working directory in the container
 WORKDIR /app
@@ -18,8 +22,10 @@ WORKDIR /app
 RUN git clone https://github.com/OrphLab/performaq.git . && \
     git pull origin main
 
-# Install the Python dependencies
+# Copy the requirements file into the container
 COPY requirements.txt /app/
+
+# Install the Python dependencies including gunicorn
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy the rest of the application files
