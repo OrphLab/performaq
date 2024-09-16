@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Orders</title>
+    <!-- Add any required CSS here -->
+</head>
+<body>
+    <h1>Your Orders</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Order ID</th>
+                <th>Product Name</th>
+                <th>Quantity</th>
+                <th>Order Date</th>
+                <th>Status</th>
+                <th>Download Files</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for order in orders %}
+                <tr>
+                    <td>{{ order.id }}</td>
+                    <td>{{ order.product.name }}</td>
+                    <td>{{ order.quantity }}</td>
+                    <td>{{ order.ordered_at }}</td>
+                    <td>{{ order.get_status_display }}</td>
+                    <td>
+                        {% for file in order.product.files.all %}
+                            <a href="{{ file.file.url }}" download="{{ file.name }}">{{ file.name }}</a><br>
+                        {% empty %}
+                            No files available
+                        {% endfor %}
+                    </td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="6">You have no orders yet.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

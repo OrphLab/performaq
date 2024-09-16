@@ -31,17 +31,25 @@
             </ul>
             <ul class="navbar-nav">
                 {% if user.is_authenticated %}
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                        {{ user.first_name }}
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <a class="dropdown-item" href="#">Account</a>
+                        <a class="dropdown-item" href="{% url 'user_orders' %}">Orders</a>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                        <div class="dropdown-divider"></div>
+                        <!-- The logout button aligned properly with other dropdown items -->
+                        <form action="{% url 'logout' %}" method="post">
+                            {% csrf_token %}
+                            <button type="submit" class="dropdown-item btn btn-link" style="padding: 0; margin: 0;">Logout</button>
+                        </form>
+                    </div>
+                </li>
+                
+                
 
-                <li class="nav-item">
-                    <!-- Use a form to ensure logout is done via POST -->
-                    <form action="{% url 'logout' %}" method="post" style="display: inline;">
-                        {% csrf_token %}
-                        <button type="submit" class="nav-link btn btn-link" style="display: inline; padding: 0; margin: 0;">Logout</button>
-                    </form>
-                </li>
-                <li class="nav-item active">
-                    <a class="" href="#">{{user.first_name}}</a>
-                </li>
                 {% else %}
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="loginDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -162,8 +170,15 @@
                             <p>Price: {{product.price}}</p>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-success">Buy</button>
                             <button type="button" class="btn btn-warning">Add to Favorites</button>
+                            {% if user.is_authenticated %}
+                            <form action="{% url 'buy_product' product.id %}" method="post">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-success">Buy</button>
+                            </form>
+                            {% else %}
+                            <button type="button" class="btn btn-success">Login</button>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
