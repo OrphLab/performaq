@@ -1,0 +1,83 @@
+Performaq Documentation
+Overview
+Performaq is a Django application that enables users to buy and sell HR tools (HR kits) on the platform. The application is divided into three main apps: product, accounts, and orders.
+
+Apps
+Product App
+The product app manages the listing and details of HR kits available on the platform.
+
+Models
+    Tag
+        name (CharField): The name of the tag. Unique across all tags.
+        __str__(): Returns the name of the tag.
+
+    Product
+        creator (ForeignKey to User): The user who created the product.
+        name (CharField): The name of the product. Defaults to "aToolkit".
+        price (DecimalField): The price of the product.
+        description (TextField): A description of the product.
+        buyers (ManyToManyField to User): Users who have purchased the product.
+        tags (ManyToManyField to Tag): Tags associated with the product.
+        product_picture (ImageField): An optional picture of the product.
+        product_materials (TextField): Materials associated with the product.
+    __str__(): Returns the name of the product.
+
+ProductFile
+    name (CharField): The name of the file.
+    product (ForeignKey to Product): The product associated with the file.
+    file (FileField): The file associated with the product.
+    description (CharField): An optional description of the file.
+    __str__(): Returns the file name.
+
+Views
+    index: A placeholder view returning a simple "Hello product index here" message.
+------------------------------------------------------------------------------------------------
+Accounts App
+The accounts app manages user profiles and authentication.
+
+Models
+
+    UserProfile
+        user (OneToOneField to User): The user associated with the profile.
+        profile_picture (ImageField): An optional profile picture.
+        bio (TextField): An optional biography.
+        is_creator (BooleanField): Flag indicating if the user is a creator.
+    __str__(): Returns the username of the user.
+
+Views
+    index: A placeholder view returning a simple "Account index here" message.
+
+    buy_product: Allows a user to purchase a product.
+        Adds the product to the user's bought_products.
+        Creates an order record with the status 'Completed'.
+        Displays a success message if the product is purchased; otherwise, displays a warning if the product is already owned.
+        Redirects to the user's orders page.
+---------------------------------------------------------------------------------------------------------
+Order App
+The orders app manages the orders made by users.
+
+Models
+    Order
+        user (ForeignKey to User): The user who made the order.
+        product (ForeignKey to Product): The product being ordered.
+        quantity (PositiveIntegerField): The quantity of the product ordered.
+        order_date (DateTimeField): The date when the order was created.
+        status (CharField): The status of the order (Pending, Completed, or Cancelled).
+    __str__(): Returns a string representation of the order, including the order ID and the username.
+
+Views
+    user_orders: Displays the orders made by the currently logged-in user.
+    Filters orders based on the logged-in user.
+    Orders are displayed in descending order by the date of the order.
+
+-----------------------------------------------------------------------------------------------------------
+URL Patterns
+    path('', views.index, name='index'): The home page of the application.
+    path('admin/', admin.site.urls): Django admin interface.
+    path('account/', include('account.urls')): Includes URLs for the accounts app.
+    path('product/', include('product.urls')): Includes URLs for the product app.
+    path('login/', auth_views.LoginView.as_view(), name='login'): Login page.
+    path('logout/', auth_views.LogoutView.as_view(next_page="index"), name='logout'): Logout page.
+    path('orders/', include('orders.urls')): Includes URLs for the orders app.
+    Media Files
+    The application serves media files (images, files) from the MEDIA_URL and stores them in the MEDIA_ROOT directory.
