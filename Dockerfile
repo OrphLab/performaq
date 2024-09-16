@@ -25,11 +25,15 @@ RUN git clone https://github.com/OrphLab/performaq.git . && \
 # Copy the requirements file into the container
 COPY requirements.txt /app/
 
-# Install the Python dependencies including gunicorn
-RUN pip install --no-cache-dir -r requirements.txt
+# Update pip to the latest version and install the Python dependencies
+RUN pip install --upgrade pip && \
+    pip install --no-cache-dir -r requirements.txt
 
 # Copy the rest of the application files
 COPY . /app/
+
+# Collect static files
+RUN python manage.py collectstatic --noinput
 
 # Expose the port your application will run on
 EXPOSE 9090
