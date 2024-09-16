@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-v9!mt1@iuza+qishzy@ie&fckplhi3=4#1e7q@jd$1+6*urd=m
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['orphlab.com', 'localhost', '127.0.0.1']
 
 
 # Application definition
