@@ -25,10 +25,9 @@ from django.contrib.auth import views as auth_views
 urlpatterns = [
     path('', views.index, name='index'),
     path('admin/', admin.site.urls),
-    path('account/', include('account.urls') ),
+    path('account/', include('account.urls')),
     path('product/', include('product.urls')), 
     path('login/', auth_views.LoginView.as_view(), name='login'),
     path('logout/', auth_views.LogoutView.as_view(next_page="index"), name='logout'),
     path('orders/', include('orders.urls')),
-
-]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
